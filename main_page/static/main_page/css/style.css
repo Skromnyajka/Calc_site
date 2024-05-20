@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: linear-gradient(180.00deg, rgb(146, 157, 255),rgb(195, 118, 255) 100%) no-repeat;
+    width: 100fr;
+    height: 200vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.val_label, .values {
+    display: flex;
+    flex-flow: row;
+}
+
+.val_label {
+    grid-gap: 3%;
+}
+
+.values {
+    justify-content: center;
+    grid-gap: 4%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    grid-gap: 10%;
+}
+
+h2, label, p, #result {
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+}
+
+.button-input /*, .button-output*/ {
+    border-radius: 35px;
+    border-color: white;
+    box-shadow: 4px 6px 4px 0px rgba(120, 0, 214, 0.42);
+    background: rgb(255, 255, 255);
+}
+
+.link_text {
+    text-decoration: none;
+}
+
+.input-p {
+    width: 420px;
+    height: 23.5px;
+}
+
+.input-n{
+    width: 38px;
+    height: 23.5px;
+}
+
+.button-input {
+    height: 23.5px;
+    width: 60%;
+    padding: 5px 0 5px 5px;
+    font-weight: bold;
+}
+
+/* .button-output {
+    width: auto;
+    height: 800px;
+    padding: 5%
+} */
+
+.button-nav-main, .button-nav {
+    border: 2px solid;
+    background-color: rgba(255,255,255,0);
+    border-color: white;
+    border-radius: 35px;
+    width: 381px;
+    height: 73px;
+}
+
+.name-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+#result {
+    border: 2px solid;
+    background-color: rgba(255,255,255,0);
+    border-color: white;
+    border-radius: 35px;
+    height: 35px;
+    width: 100px;
+    font-size: 20px;
+    display: flex;
+    margin: 3% 0 0 42%;
+}
+
+#result:hover { background: rgb(171, 0, 214); }
+#result:active { background: rgb(173, 74, 198); }
+
+#list {
+    width: 20%;
+    padding-top: 3px;
+    margin-top: 2%;
+}

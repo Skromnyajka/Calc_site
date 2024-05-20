@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background: linear-gradient(180.00deg, rgb(146, 157, 255),rgb(195, 118, 255) 100%) no-repeat;
+    width: 100fr;
+    height: 200vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.button-output {
+    border-radius: 35px;
+    border-color: white;
+    box-shadow: 4px 6px 4px 0px rgba(120, 0, 214, 0.42);
+    background: rgb(255, 255, 255);
+    width: 800px;
+    height: 800px;
+    padding: 2%;
+    display: flex;
+    flex-flow: column;
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+}
+
+.context {
+    padding-left: 20px
+}
+
+#con {
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#find {
+    padding-right: 10px;
+    border-right: 1px solid black;
+}
+
+.column {
+    padding-right: 2%
+}
+
+.rows {
+    display: flex;
+    flex-flow: row;
+}
+
+#ans {
+    padding-top: 2%;
+}

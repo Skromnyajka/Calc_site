@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Решение</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main_page/css/done_style.css' %}">
+    <script>
+        MathJax = {
+            tex: {
+                packages: ['base'],        // extensions to use
+                inlineMath: [              // start/end delimiter pairs for in-line math
+                    ['$', '$']
+                ],
+                displayMath: [             // start/end delimiter pairs for display math
+                    ['$$', '$$']
+                ]
+            }
+        }
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <p> Решение </p>
+    <div class="button-output">
+        <div class="rows">
+            <div class="column">
+                <div id="con">
+                    <b>Дано</b><br>
+                    <div class="context">
+                        {% for i in con %}
+                        {{ i }} <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div id="find">
+                    {{ find }} - ?
+                </div>
+            </div>
+            <div id="sol">
+                <b>Решение</b><br>
+                <div class="context">
+                    {% for i in sol %}
+                    {{ i }} <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="ans">
+            <b>Ответ:</b> {{ ans }}
+        </div>
+    </div>
+</body>
+</html>

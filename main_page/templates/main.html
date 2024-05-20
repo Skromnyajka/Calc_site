@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Решение задач</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main_page/css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <button class="button-nav-main"> <a href="#" class="link_text"> <h2> ГЛАВНАЯ </h2> </a> </button> 
+
+        <button class="button-nav"> <a href="#" class="link_text"> <h2> О ПРОЕКТЕ </h2> </a> </button>
+    </header>
+
+    <main>
+        <p class="input-p"> Введите свои значения в ячейке: </p>
+        <form id="values" class="values" action="/done" method="get">
+            <div class="val_label">
+                <label for="amount"> n = </label>
+                <input type="number" class="button-input" name="n">
+            </div>
+            <div class="val_label">
+                <label for="interval"> m </label>
+                <select class="button-input" id="list" name="sign1"> 
+                    <option> = </option>
+                    <option> < </option>
+                    <option> > </option>
+                    <option> <= </option>
+                    <option> => </option>
+                </select>
+                <input type="number" class="button-input" name="m1">
+            </div>
+            <div class="val_label">
+                <label for="probability"> p = </label>
+                <input type="text" class="button-input" name="p"> <br>
+            </div>
+        </form>
+        <div class="name-label">
+            <p>интервал</p>
+        </div>
+        <div>
+            <button type="submit" id="result" form="values">Решить</button>
+            <!-- <p> Решение </p>
+            <div class="button-output"></div> -->
+            <!-- <textarea class="button-output" maxlength="1000" ></textarea> -->
+            </div>
+    </main>
+
+</body>
+</html>
