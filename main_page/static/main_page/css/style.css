@@ -85,7 +85,6 @@ h2, label, p, #result {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: -20px;
 }
 
 #result {
@@ -107,4 +106,14 @@ h2, label, p, #result {
     width: 20%;
     padding-top: 3px;
     margin-top: 2%;
+}
+
+.desc {
+    font-size: 20px;
+    line-height: 10px;
+}
+
+#desc {
+    margin-top: 50px;
+    margin-bottom: 40px;
 }

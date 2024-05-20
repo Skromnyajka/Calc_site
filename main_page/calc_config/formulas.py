@@ -202,7 +202,10 @@ def bernulli(n, m1, m2, sign1, sign2, p, q, npq, pq, find_text):
         f3 += multiple_replace(r'$\frac{num}{den} \approx$',
                                {'num': str(Decimal(ln // nod)), 'den': str(Decimal(ld // nod))}) + f' {f_res}'
 
-    formula = [f1, '', f2, '', f21 + f22 + f23 + f3, f_res]
+    f_resp = round(f_res*100, 1)
+    f_resp = f_resp if int(f_resp) != f_resp else int(f_resp)
+
+    formula = [f1, '', f2, '', f21 + f22 + f23 + f3, str(f_res) + f' ({f_resp}%)']
     return formula
 
 #Решение по ф-ле Пуассона
@@ -225,13 +228,12 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
                 f2 += multiple_replace(r'$P_{n}({m}) \approx$ ', {'n': str(n), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$P_{n}({m})$ + ', {'n': str(n), 'm': str(i)})
-        f2 += r'$\approx$ '
         for i in range(m1, m2 + (sign1 == r'\leq')):
             if i == (m2 - 1 + (sign1 == r'\leq')):
                 f2 += multiple_replace(r'$\frac{np^{m}}{m!} \cdot e^{-np} \approx$', {'np': str(np), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$\frac{np^{m}}{m!} \cdot e^{-np}$ + ', {'np': str(np), 'm': str(i)})
-        f2 += r'$\approx$ ('
+        f2 += r'('
         res_frac = Decimal('0')
         for i in range(m1, m2 + (sign1 == r'\leq')):
             frac = round(round(np ** i, 4) / factorial(i), 4)
@@ -243,7 +245,7 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
         f2 += r' $\cdot \ e^{-np} \approx$ '.replace('np', str(np))
         result = float(res_frac / Decimal(exp(1)) ** Decimal(np))
         result = int(result) if int(result) == result else round(result, 5)
-        f2 += multiple_replace(r'$\approx res_frac \cdot e^{-np} \approx \frac{res_frac}{e^{np}} \approx$ result',
+        f2 += multiple_replace(r'$ res_frac \cdot e^{-np} \approx \frac{res_frac}{e^{np}} \approx$ result',
                                {'result': str(result), 'np': str(np),
                                 'res_frac': str(int(res_frac) if int(res_frac) == res_frac else res_frac)})
         f3 = str(int(result) if int(result) == result else result)
@@ -259,13 +261,13 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
                 f2 += multiple_replace(r'$P_{n}({m})) \approx$ ', {'n': str(n), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$P_{n}({m})$ + ', {'n': str(n), 'm': str(i)})
-        f2 += r'$\approx 1 - ($'
+        f2 += r' 1 - ($'
         for i in range(m1 + (sign1 == r'\leq')):
             if i == (m1 - 1 + (sign1 == r'\leq')):
                 f2 += multiple_replace(r'$\frac{np^m}{m!} \cdot e^{-np}) \approx$ ', {'np': str(np), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$\frac{np^m}{m!} \cdot e^{-np}$ + ', {'np': str(np), 'm': str(i)})
-        f2 += r'$\approx 1 - ($'
+        f2 += r' 1 - ($'
         res_frac = Decimal('0')
         for i in range(m1 + (sign1 == r'\leq')):
             frac = round(round(np ** i, 4) / factorial(i), 5)
@@ -277,7 +279,7 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
         f2 += r' $\cdot \ e^{-np} \approx$'.replace('np', str(np))
         result = round(float(1 - res_frac / Decimal(exp(1)) ** Decimal(np)), 5)
         f2 += multiple_replace(
-            r'$\approx 1 - res_frac \cdot e^{-np} \approx 1 - \frac{res_frac}{e^{np}} \approx$ result',
+            r'1 - res_frac \cdot e^{-np} \approx 1 - \frac{res_frac}{e^{np}} \approx$ result',
             {'result': str(result), 'np': str(np), 'res_frac': str(res_frac)})
         f3 = str(int(result) if int(result) == result else result)
 
@@ -290,13 +292,12 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
                 f2 += multiple_replace(r'$P_{n}({m}) \approx$ ', {'n': str(n), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$P_{n}({m})$ + ', {'n': str(n), 'm': str(i)})
-        f2 += r'$\approx$ '
         for i in range(m1 + (sign1 == r'\leq')):
             if i == (m1 - 1 + (sign1 == r'\leq')):
                 f2 += multiple_replace(r'$\frac{np^m}{m!} \cdot e^{-np} \approx$', {'np': str(np), 'm': str(i)})
             else:
                 f2 += multiple_replace(r'$\frac{np^m}{m!} \cdot e^{-np}$ + ', {'np': str(np), 'm': str(i)})
-        f2 += r'$\approx$ ('
+        f2 += r' ('
         res_frac = Decimal('0')
         for i in range(m1 + (sign1 == r'\leq')):
             frac = round(round(np ** i, 4) / factorial(i), 4)
@@ -307,7 +308,7 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
                 f2 += r'frac + '.replace('frac', str(int(frac) if int(frac) == frac else frac))
         f2 += r' $\cdot \ e^{-np} \approx$ '.replace('np', str(np))
         result = round(float(res_frac / Decimal(exp(1)) ** Decimal(np)), 5)
-        f2 += multiple_replace(r'$\approx res_frac \cdot e^{-np} \approx \frac{res_frac}{e^{np}} \approx$ result',
+        f2 += multiple_replace(r'$ res_frac \cdot e^{-np} \approx \frac{res_frac}{e^{np}} \approx$ result',
                                {'result': str(result), 'np': str(np), 'res_frac': str(res_frac)})
         f3 = str(int(result) if int(result) == result else result)
 
@@ -320,6 +321,10 @@ def puasson(n, m1, m2, p, np, sign1, sign2, find_text, pq):
             {'np': str(np), 'find': find_text, 'frac_form': str(int(frac) if int(frac) == frac else frac),
              'result': str(result)})
         f3 = str(int(result) if int(result) == result else result)
+
+    f_resp = round(float(f3)*100, 1)
+    f_resp = f_resp if int(f_resp) != f_resp else int(f_resp)
+    f3 += f' ({f_resp}%)'
 
     formula = [f1, '', f_2, '', f2, f3]
 
@@ -369,8 +374,11 @@ def loc_laplas(n, m1, p, q, npq, np, find_text, pq):
                                                                                    frac2) == frac2 else frac2),
                                                                                'result': str(int(result) if int(
                                                                                    result) == result else result)})
-
     f3 = str(int(result) if int(result) == result else result)
+
+    f_resp = round(float(f3)*100, 1)
+    f_resp = f_resp if int(f_resp) != f_resp else int(f_resp)
+    f3 += f' ({f_resp}%)'
 
     formula = [f1, '', f_2, '', f2, f3]
     return formula
@@ -406,8 +414,8 @@ def int_laplas(n, m1, m2, p, q, npq, np, find_text, sign1, pq):
                                                          'frac2': str(int(frac2) if int(
                                                              frac2) == frac2 else frac2)}) + str(x1)
 
-    f2 += r'2) $x_2 = \frac{m_2-np}{\sqrt{npq}}$'
-    f2 += multiple_replace(r'$x_2 = \frac{m_2-n \cdot p}{\sqrt{npq}}$ = ',
+    f21 = r'2) $x_2 = \frac{m_2-np}{\sqrt{npq}}$'
+    f212 = multiple_replace(r'$x_2 = \frac{m_2-n \cdot p}{\sqrt{npq}}$ = ',
                            {'m_2': str(m2), 'npq': str(npq), 'n': str(n), 'p': str(
                                Decimal(p[0]) / Decimal(p[1]) if Decimal(p[0]) / Decimal(p[1]) == round(
                                    Decimal(p[0]) / Decimal(p[1]), 5) else multiple_replace(r'\frac{p[0]}{p[1]}',
@@ -416,33 +424,37 @@ def int_laplas(n, m1, m2, p, q, npq, np, find_text, sign1, pq):
     frac1 = Decimal(m2 - np)
     frac2 = round(sqrt(npq), 5)
     x2 = round(Decimal(frac1) / Decimal(frac2), 2)
-    f2 += multiple_replace(r'$\frac{frac1}{frac2}$ = ', {'frac1': str(int(frac1) if int(frac1) == frac1 else frac1),
+    f212 += multiple_replace(r'$\frac{frac1}{frac2}$ = ', {'frac1': str(int(frac1) if int(frac1) == frac1 else frac1),
                                                          'frac2': str(int(frac2) if int(
                                                              frac2) == frac2 else frac2)}) + str(x2)
 
-    f2 += r'3) $\Phi(x) = \frac{1}{\sqrt{2\pi}}\int_0^xe^{\frac{-t^2}{2}}$ - табличное значение'
+    f22 = r'3) $\Phi(x) = \frac{1}{\sqrt{2\pi}}\int_0^xe^{\frac{-t^2}{2}}$ - табличное значение'
     x1_flag = x1 < 0
-    f2 += r'$\Phi(x_1)$ = '
-    f2 += r'$-\Phi(x_1)$ = '.replace('x_1', str(x1 * -1)) if x1_flag else r'$\Phi(x_1)$ = '.replace('x_1', str(x1))
+    f221 = r'$\Phi(x_1)$ = '
+    f221 += r'$-\Phi(x_1)$ = '.replace('x_1', str(x1 * -1)) if x1_flag else r'$\Phi(x_1)$ = '.replace('x_1', str(x1))
     fux1 = float(x1 * -1 if x1_flag else x1)
     fux1 = int_data(round(fux1, 2), int(fux1 * 100 % 10 // 1)) if fux1 < 5 else 0.5
-    f2 += str(fux1) + r' - при $x\geq5, \ \varphi(x) \rightarrow$0.5'
+    f221 += str(fux1) + r' - при $x\geq5, \ \varphi(x) \rightarrow$0.5'
     x2_flag = x2 < 0
-    f2 += r'$\Phi(x_2)$ = '
-    f2 += r'$-\Phi(x_2)$ = '.replace('x_2', str(x2 * -1)) if x2_flag else r'$\Phi(x_2)$ = '.replace('x_2', str(x2))
+    f222 = r'$\Phi(x_2)$ = '
+    f222 += r'$-\Phi(x_2)$ = '.replace('x_2', str(x2 * -1)) if x2_flag else r'$\Phi(x_2)$ = '.replace('x_2', str(x2))
     fux2 = float(x2 * -1 if x2_flag else x2)
     fux2 = int_data(round(fux2, 2), int(fux2 * 100 % 10 // 1)) if fux2 < 5 else 0.5
-    f2 += str(fux2) + r' - при $x\geq5, \ \varphi(x) \rightarrow$0.5'
+    f222 += str(fux2) + r' - при $x\geq5, \ \varphi(x) \rightarrow$0.5'
 
-    f2 += r'4) $P_n(m_1 \leqslant m \leqslant m_2) \ \approx \ \Phi(x_2)-\Phi(x_1)$'
+    f23 = r'4) $P_n(m_1 \leq m \leq m_2) \ \approx \ \Phi(x_2)-\Phi(x_1)$'
     x1_res = ('+' if x1_flag else '-') + str(fux1)
     x2_res = ('-' if x2_flag else '') + str(fux2)
     result = Decimal(float(x2_res) + float(x1_res))
     result = result if int(result) == result else round(result, 5)
-    f2 += multiple_replace(r'find $\approx x2x1 \approx result$',
+    f231 = multiple_replace(r'find $\approx x2x1 \approx result$',
                            {'find': find_text, 'x2': x2_res, 'x1': x1_res, 'result': str(result)})
 
     f3 = str(result)
 
-    formula = [f1, '', f_2, '', f2, f3]
+    f_resp = round(float(result)*100, 1)
+    f_resp = f_resp if int(f_resp) != f_resp else int(f_resp)
+    f3 += f' ({f_resp}%)'
+
+    formula = [f1, '', f_2, f2, '', f21, f212, '', f22, f221, f222, '', f23, f231, f3]
     return formula

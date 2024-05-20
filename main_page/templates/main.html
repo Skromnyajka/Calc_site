@@ -9,12 +9,17 @@
 <body>
 
     <header>
-        <button class="button-nav-main"> <a href="#" class="link_text"> <h2> ГЛАВНАЯ </h2> </a> </button> 
+        <button class="button-nav-main"> <a href="/" class="link_text"> <h2> ГЛАВНАЯ </h2> </a> </button> 
 
-        <button class="button-nav"> <a href="#" class="link_text"> <h2> О ПРОЕКТЕ </h2> </a> </button>
+        <button class="button-nav"> <a href="/code" class="link_text"> <h2> О ПРОЕКТЕ </h2> </a> </button>
     </header>
 
     <main>
+        <div id="desc">
+            <p class="desc">n - общее кол-во испытаний</p>
+            <p class="desc">m - кол-во событий, которые должны произойти</p>
+            <p class="desc">p - вероятность успеха</p>
+        </div>
         <p class="input-p"> Введите свои значения в ячейке: </p>
         <form id="values" class="values" action="/done" method="get">
             <div class="val_label">
@@ -27,8 +32,8 @@
                     <option> = </option>
                     <option> < </option>
                     <option> > </option>
-                    <option> <= </option>
-                    <option> => </option>
+                    <option value="<="> ≤ </option>
+                    <option value=">="> ≥ </option>
                 </select>
                 <input type="number" class="button-input" name="m1">
             </div>
@@ -38,10 +43,10 @@
             </div>
         </form>
         <div class="name-label">
-            <p>интервал</p>
+            <a href="/inter"><p>интервал</p></a>
         </div>
         <div>
-            <button type="submit" id="result" form="values">Решить</button>
+            <button type="submit" id="result" form="values" name="but" value="zn">Решить</button>
             <!-- <p> Решение </p>
             <div class="button-output"></div> -->
             <!-- <textarea class="button-output" maxlength="1000" ></textarea> -->

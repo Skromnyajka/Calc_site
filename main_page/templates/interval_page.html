@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Решение задач интервалом</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main_page/css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <button class="button-nav-main"> <a href="/" class="link_text"> <h2> ГЛАВНАЯ </h2> </a> </button> 
+
+        <button class="button-nav"> <a href="/code" class="link_text"> <h2> О ПРОЕКТЕ </h2> </a> </button>
+    </header>
+
+    <main>
+        <div id="desc">
+            <p class="desc">n - общее кол-во испытаний</p>
+            <p class="desc">m - кол-во событий, которые должны произойти</p>
+            <p class="desc">p - вероятность успеха</p>
+        </div>
+        <p class="input-p"> Введите свои значения в ячейке: </p>
+        <form id="values" class="values" action="/done" method="get">
+            <div class="val_label">
+                <label for="amount"> n = </label>
+                <input type="number" class="button-input" name="n">
+            </div>
+            <div class="val_label">
+                <input type="number" class="button-input" name="m1">
+                <label for="interval"> &le; m &le; </label>
+                <input type="number" class="button-input" name="m2">
+            </div>
+            <div class="val_label">
+                <label for="probability"> p = </label>
+                <input type="text" class="button-input" name="p"> <br>
+            </div>
+        </form>
+        <div class="name-label">
+            <a href="/"><p>значение</p></a>
+        </div>
+        <div>
+            <button type="submit" id="result" form="values" name="but" value="int">Решить</button>
+            <!-- <p> Решение </p>
+            <div class="button-output"></div> -->
+            <!-- <textarea class="button-output" maxlength="1000" ></textarea> -->
+            </div>
+    </main>
+
+</body>
+</html>
